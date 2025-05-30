@@ -114,3 +114,6 @@ https://qiita.com/TechCraft/items/f06a410972132628a518
 
 【Reactはjs起点でUI構築をする】
 https://qiita.com/TechCraft/items/25ca012aa719d9803800
+
+【Azure App Service を使って React + Flask + SQL Server のアプリをデプロイする】
+https://qiita.com/TechCraft/items/b7bc677ac9e2716c8a07

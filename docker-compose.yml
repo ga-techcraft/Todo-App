@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  front:
+    build: ./front
+    ports:
+      - "80:80"
+    volumes:
+      - ./front:/app
+    depends_on:
+      - back
+
+  back:
+    build: ./back
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./back:/app
+    depends_on:
+      - sqlserver
+    environment:
+      - DB_HOST=sqlserver
+      - DB_USER=todoapp_user
+      - DB_PASSWORD=TodoApp_pass123!
+      - DB_NAME=todoapp_db
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=TodoApp_pass123!
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+volumes:
+  sql_data:

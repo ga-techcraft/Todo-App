@@ -9,7 +9,7 @@ function ToDoPage() {
 
     const addTask = async () => {
         if (text.trim() === '') return
-        await fetch('http://127.0.0.1:5000/todos', {
+        await fetch('localhost:5000/todos', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ "task": text })
@@ -20,14 +20,14 @@ function ToDoPage() {
 
     const removeTask = async (index) => {
         if (index < 0 || index >= tasks.length) return
-        await fetch(`http://127.0.0.1:5000/todos/${index}`, {
+        await fetch(`localhost:5000/todos/${index}`, {
             method: 'DELETE'
         });
         fetchTodos();
     }
 
     const fetchTodos = () => {
-        fetch('http://127.0.0.1:5000/todos')
+        fetch('localhost:5000/todos')
             .then(res => res.json())
             .then(data => setTasks(data));
     };
